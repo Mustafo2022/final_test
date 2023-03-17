@@ -1,0 +1,13 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+{% block content %}
+<div class="card" style="width: 18rem;">
+    <img src="{{ object.image.url }}" class="card-img-top" alt="{{ object.image.url }}">
+    <div class="card-body">
+        <h5 class="card-title">{{ object.title }}</h5>
+        <p class="card-text">{{ object.description }}</p>
+        <a href="{% url 'home' %}" class="btn btn-primary">Go back.</a>
+    </div>
+</div>
+
+{% endblock %}
