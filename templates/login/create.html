@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>KiddZo | Sign Up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'animate/animate.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+
+<div class="limiter">
+
+    <div class="container-login100">
+        <div class="col-3" style="justify-content: right;position: absolute; margin-left: 75%; margin-top: -47%;">
+            <br>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="{{ message.tags }} position-fixed" role="alert"
+                         style="margin-left: 7%; z-index: 100; border: 1px solid #fff;">
+                        <strong><i
+                                class="start-icon fa fa-exclamation-triangle faa-flash animated"></i></strong> {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" style="margin-top: 10%;">
+                <img src="{% static 'img/K.png' %}" width="1000" alt="IMG">
+            </div>
+
+            <form class="login100-form validate-form" method="post">
+                {% csrf_token %}
+                <span class="login100-form-title">
+						Create a Member
+					</span>
+
+                <div class="wrap-input100 validate-input" data-validate="Valid username is required">
+                    {#                    <input class="input100" type="text" name="username" placeholder="Username">#}
+                    {{ form.first_name }}
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Valid username is required">
+                    {#                    <input class="input100" type="text" name="username" placeholder="Username">#}
+                    {{ form.last_name }}
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Valid username is required">
+                    {#                    <input class="input100" type="text" name="username" placeholder="Username">#}
+                    {{ form.username }}
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Valid username is required">
+                    {#                    <input class="input100" type="text" name="email" placeholder="Email">#}
+                    {{ form.email }}
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+{#                            <i class="fa fa-user" aria-hidden="true"></i>#}
+						</span>
+                </div>
+                {##}
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    {#                    <input class="input100" type="password" name="pass" placeholder="Password">#}
+                    {{ form.password }}
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    {#                    <input class="input100" type="password" name="pass" placeholder="Password">#}
+                    {{ form.confirm_password }}
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    {#                    <input class="input100" type="password" name="pass" placeholder="Password">#}
+                    {{ form.bio }}
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    <span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        Sign Up
+                    </button>
+                </div>
+
+
+                <div class="text-center p-t-136">
+                    <a class="txt2" href="{% url 'login' %}">
+
+                        Already have an Account?
+                    </a>
+                </div>
+                <div class="text-center" style="margin-top: 5%;">
+                    <a class="txt2" href="{% url 'home' %}">
+                        Take me back
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!--===============================================================================================-->
+<script src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'bootstrap/js/popper.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<!--==============================================================================================-->
+<script src="{% static 'select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'tilt/tilt.jquery.min.js' %}"></script>
+<script>
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+<!--===============================================================================================-->
+<script src="{% static 'js/login.js' %}"></script>
+
+</body>
+</html>

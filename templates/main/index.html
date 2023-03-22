@@ -2,58 +2,55 @@
 {% load static %}
 {% block content %}
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-6 text-center">
-          <h2>Welcome to <br> <span>KiddZo</span></h2>
-          <p>some description of this web page.</p>
-          <a href="contact.html" class="btn-get-started">Get STARTED</a>
-        </div>
-      </div>
-    </div>
-  </section><!-- End Hero Section -->
-
-  <main id="main" data-aos="fade" data-aos-delay="1500">
-
-    <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery">
-      <div class="container-fluid">
-
-        <div class="row gy-4 justify-content-center">
-        {% for obj in blogs %}
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="{{ obj.image.url }}" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="{{ obj.image.url }}" title="{{ obj.title }}" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="{% url 'detail' pk=obj.pk %}" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade"
+             data-aos-delay="1500">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h2>Welcome to <br> <span>KiddZo</span></h2>
+                    <p>This website specially made for kids. </p>
+                    <a href="{% if not request.user.is_authenticated %}{% url 'login' %}{% else %}{% url 'post-create' %}{% endif %}" class="btn-get-started">Get STARTED</a>
+                </div>
             </div>
-          </div><!-- End Gallery Item -->
-        {% endfor %}
-
         </div>
+    </section><!-- End Hero Section -->
 
-      </div>
-    </section><!-- End Gallery Section -->
+    <main id="main" data-aos="fade" data-aos-delay="1500">
 
-  </main><!-- End #main -->
+        <!-- ======= Gallery Section ======= -->
+        <section id="gallery" class="gallery">
+            <div class="container-fluid">
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>PhotoFolio</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+                <div class="row gy-4 justify-content-center">
+                    {% for obj in blogs %}
+                        <div class="col-xl-3 col-lg-4 col-md-6">
+                            <div class="gallery-item h-100">
+                                <img src="{{ obj.image.url }}" class="img-fluid" alt="">
+                                <div class="gallery-links d-flex align-items-center justify-content-center">
+                                    <a href="{{ obj.image.url }}" title="{{ obj.title }}"
+                                       class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                    <a href="{% url 'detail' pk=obj.pk %}" class="details-link"><i
+                                            class="bi bi-link-45deg"></i></a>
+                                    {% if request.user == obj.owner %}
+                                        <a href="{% url 'delete' pk=obj.pk %}" class="details-link">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                 fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                            </svg>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div><!-- End Gallery Item -->
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </section><!-- End Gallery Section -->
+
+    </main><!-- End #main -->
+
+
 {% endblock %}

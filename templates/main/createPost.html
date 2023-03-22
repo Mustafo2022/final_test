@@ -1,0 +1,59 @@
+{% extends 'layouts/main.html' %}
+]{% load static %}
+{% block content %}
+
+    <body>
+
+
+    <main id="main">
+
+        <!-- ======= End Page Header ======= -->
+        <div class="page-header d-flex align-items-center">
+            <div class="container position-relative">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h2>Create a Post</h2>
+                        <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas
+                            consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione
+                            sint. Sit quaerat ipsum dolorem.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Page Header -->
+
+        <!-- ======= Contact Section ======= -->
+            <div class="container">
+
+                <div class="row justify-content-center mt-4">
+
+                    <div class="col-lg-9">
+                        <form action="" method="post">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    {{ form.title }}
+                                    {#                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>#}
+                                </div>
+                                <div class="col-md-6  form-group mt-3 mt-md-0">
+                                    {{ form.image }}
+                                    {#                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>#}
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                {{ form.category }}
+                                {#                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>#}
+                            </div>
+                            <div class="form-group mt-3">
+                                {{ form.description }}
+                                {#                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>#}
+                            </div>
+                            <button type="submit">Create</button>
+                        </form>
+                    </div><!-- End Contact Form -->
+
+                </div>
+
+            </div>
+
+    </main><!-- End #main -->
+{% endblock %}
