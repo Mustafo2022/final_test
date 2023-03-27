@@ -12,25 +12,7 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a href="{% url 'home' %}" class="active">Home</a></li>
-                <li class="dropdown"><a href="#"><span>Gallery</span> <i
-                        class="bi bi-chevron-down dropdown-indicator"></i></a>
-                    <ul>
-                        <li><a href="gallery.html">Nature</a></li>
-                        <li><a href="gallery.html">People</a></li>
-                        <li><a href="gallery.html">Architecture</a></li>
-                        <li><a href="gallery.html">Animals</a></li>
-                        <li><a href="gallery.html">Sports</a></li>
-                        <li><a href="gallery.html">Travel</a></li>
-                        <li class="dropdown"><a href="#"><span>Sub Menu</span> <i
-                                class="bi bi-chevron-down dropdown-indicator"></i></a>
-                            <ul>
-                                <li><a href="#">Sub Menu 1</a></li>
-                                <li><a href="#">Sub Menu 2</a></li>
-                                <li><a href="#">Sub Menu 3</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'contact' %}">Contact</a></li>
                 {% if request.user.is_authenticated %}
@@ -43,17 +25,24 @@
                                     <li class="dropdown"><a href="#"><span>{{ request.user.points }}</span> <i
                                             class="bi bi-chevron-down dropdown-indicator"></i></a>
                                         <ul>
-                                            <li><a href="{% url 'verify-email' %}">{% if request.user.email_verified %}
-                                                <del>Verify Email to get 15 points</del>{% else %}Verify Email to get 15
-                                                points{% endif %}</a></li>
+                                            <li><a href="
+
+                                                    {% if not request.user.email_verified %}{% url 'verify' %}{% else %}{% url 'home' %}{% endif %}"
+                                                   {% if request.user.email_verified %}disabled{% endif %}>
+                                                {% if request.user.email_verified %}
+                                                    <del>Verify Email to get 15 points</del>{% else %}Verify Email to
+                                                    get 15
+                                                    points{% endif %}</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown"><a href="#"><span>{{ request.user.popularity }}</span> <i
                                             class="bi bi-chevron-down dropdown-indicator"></i></a>
                                         <ul>
-                                            <li><a href="#">Sub Menu 1</a></li>
-                                            <li><a href="#">Sub Menu 2</a></li>
-                                            <li><a href="#">Sub Menu 3</a></li>
+                                            <li><a href="#">Add 10 Popularity</a></li>
+                                            <li><a href="#">Add 20 Popularity</a></li>
+                                            <li><a href="#">Add 50 Popularity</a></li>
+                                            <li><a href="#">Add 70 Popularity</a></li>
+                                            <li><a href="#">Add 100 Popularity</a></li>
                                         </ul>
                                     </li>
                                 </ul>

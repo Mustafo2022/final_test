@@ -39,10 +39,8 @@ html::-webkit-scrollbar {
 html::-webkit-scrollbar-thumb {
     background: var(--color-primary);
     border-radius: 10px;
-    height: 1vh;
-    width: 1vw;
-    cursor: pointer;
 }
+
 body {
     font-family: var(--font-default);
     color: var(--color-default);
@@ -1276,15 +1274,29 @@ h6 {
 }
 
 
-
 .form-control {
     background: #161718;
+    color: #ffffff;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #ffffff !important;
 }
 
 .image_upload::-webkit-file-upload-button {
     background-color: transparent;
-    color: transparent;
+    color: #ffffff;
     width: 0;
     margin-left: -10%;
     height: 0;
+}
+
+
+.space {
+    margin-left: 1% !important;
+    margin-right: 1% !important;
+}
+
+.border-radius-10 {
+    border-radius: 5px;
 }

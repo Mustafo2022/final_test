@@ -132,7 +132,7 @@ AUTH_USER_MODEL = 'users.UserModel'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'trendy2022.asus@gmail.com'
-EMAIL_HOST_PASSWORD = 'slanjrglhxlsefpm'
+EMAIL_HOST_PASSWORD = 'ipgauivxhmfsmtxn'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

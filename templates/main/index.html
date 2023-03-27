@@ -10,7 +10,18 @@
                 <div class="col-lg-6 text-center">
                     <h2>Welcome to <br> <span>KiddZo</span></h2>
                     <p>This website specially made for kids. </p>
-                    <a href="{% if not request.user.is_authenticated %}{% url 'login' %}{% else %}{% url 'post-create' %}{% endif %}" class="btn-get-started">Get STARTED</a>
+                    <a href="
+
+
+
+
+
+
+
+
+
+                            {% if not request.user.is_authenticated %}{% url 'login' %}{% else %}{% url 'post-create' %}{% endif %}"
+                       class="btn-get-started">Get STARTED</a>
                 </div>
             </div>
         </div>
@@ -28,8 +39,16 @@
                             <div class="gallery-item h-100">
                                 <img src="{{ obj.image.url }}" class="img-fluid" alt="">
                                 <div class="gallery-links d-flex align-items-center justify-content-center">
-                                    <a href="{{ obj.image.url }}" title="{{ obj.title }}"
+                                    <a href="{{ obj.image.url }}" title="{{ obj.title }} · {{ obj.total_likes }} Likes"
                                        class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                    <form action="{% url 'like' obj.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit"
+                                                name="post_id"
+                                                ,
+                                                value="{{ obj.id }}"
+                                                class="preview-link"><i class="bi bi-hand-thumbs-up"></i></button>
+                                    </form>
                                     <a href="{% url 'detail' pk=obj.pk %}" class="details-link"><i
                                             class="bi bi-link-45deg"></i></a>
                                     {% if request.user == obj.owner %}

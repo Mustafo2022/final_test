@@ -11,10 +11,6 @@ class ResetPassword(models.Model):
 
 
 class UserModel(AbstractUser):
-    img = models.ImageField(upload_to='users/', blank=False)
     bio = models.TextField()
     age = models.PositiveIntegerField(blank=True, null=True)
-    points = models.PositiveIntegerField(default=100)
-    popularity = models.PositiveIntegerField(default=10)
-    email_verified = models.BooleanField(default=False)
     friends = models.ManyToManyField('UserModel', blank=True)

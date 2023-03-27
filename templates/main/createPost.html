@@ -23,37 +23,40 @@
         </div><!-- End Page Header -->
 
         <!-- ======= Contact Section ======= -->
-            <div class="container">
+        <div class="container">
 
-                <div class="row justify-content-center mt-4">
+            <div class="row justify-content-center mt-4">
 
-                    <div class="col-lg-9">
-                        <form action="" method="post">
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    {{ form.title }}
-                                    {#                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>#}
-                                </div>
-                                <div class="col-md-6  form-group mt-3 mt-md-0">
-                                    {{ form.image }}
-                                    {#                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>#}
-                                </div>
+                <div class="col-lg-9">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                {{ form.title }}
+                                {#                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>#}
                             </div>
-                            <div class="form-group mt-3">
-                                {{ form.category }}
-                                {#                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>#}
+                            <div class="col-md-6  form-group mt-3 mt-md-0">
+                                {{ form.image }}
+                                {#                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>#}
                             </div>
-                            <div class="form-group mt-3">
-                                {{ form.description }}
-                                {#                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>#}
-                            </div>
-                            <button type="submit">Create</button>
-                        </form>
-                    </div><!-- End Contact Form -->
-
-                </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form.category }}
+                            {#                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>#}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form.description }}
+                            {#                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>#}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-success p-3 border-radius-10 mt-3">Send Message</button>
+                        </div>
+                    </form>
+                </div><!-- End Contact Form -->
 
             </div>
+
+        </div>
 
     </main><!-- End #main -->
 {% endblock %}

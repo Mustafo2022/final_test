@@ -1,4 +1,3 @@
-import datetime
 import random
 
 from django.core.mail import send_mail
@@ -13,6 +12,7 @@ from .models import Messages
 
 def HomeView(request):
     blogs = Blogs.objects.all().order_by('-id')[:50]
+    print("blogs")
     return render(request, 'main/index.html', {'blogs': blogs})
 
 
@@ -28,19 +28,28 @@ def AboutView(request):
     return render(request, 'main/about.html', {'users': users})
 
 
-def VerifyEmail(request):
-    user = request.user
-    email = user.email
-    title = 'KiddZo'
-    x = []
-    for i in range(random.randrange(5, 6)):
-        rand = random.randrange(99999, 1000000)
-        list(str(rand))
-        x = rand
-        user.email_verified = True
+def verify(request):
+    if not request.user.email_verified:
+        request.user.email_verified = True
+        request.user.points += 15
 
-    msg = f'Thank you for using our app! Your password for verify email  is {x}'
-    send_mail(title, msg, 'trendy2022.asus@gmail.com', [email])
+        email = request.user.email
+        title = 'KiddZo'
+        x = []
+        for i in range(random.randrange(5, 6)):
+            rand = random.randrange(99999, 1000000)
+            list(str(rand))
+            x = rand
+
+        msg = f'Thank you for using our app! Your password for verify email  is {x}'
+        send_mail(title, msg, 'trendy2022.asus@gmail.com', [email])
+
+        blogs = Blogs.objects.all().order_by('-id')[:50]
+        return render(request, 'main/index.html', {'blogs': blogs})
+    else:
+        return redirect('/')
+
+
+def AddPoint(request):
+    request.user.points -= 15
     return redirect('/')
-
-
