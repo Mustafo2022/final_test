@@ -35,17 +35,14 @@ def GalleryLike(request, pk):
 
 def PostLike(request, pk):
     post = get_object_or_404(Blogs, id=request.POST.get('post_id'))
+
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
-        liked = False
+        post.owner.points += 1
     else:
         post.likes.add(request.user)
-        liked = True
 
-    context = {
-        'liked': liked
-    }
-    return HttpResponseRedirect('/', context)
+    return HttpResponseRedirect('/')
 
 
 def GalleryDelete(request, pk):

@@ -50,6 +50,31 @@ def verify(request):
         return redirect('/')
 
 
-def AddPoint(request):
+def Add10(request):
     request.user.points -= 15
+    request.user.popularity += 10
+    return redirect('/')
+
+
+def Add20(request):
+    request.user.points -= 25
+    request.user.popularity += 20
+    return redirect('/')
+
+
+def Add50(request):
+    request.user.points -= 55
+    request.user.popularity += 50
+    return redirect('/')
+
+
+def Add70(request):
+    request.user.points -= 75
+    request.user.popularity += 70
+    return redirect('/')
+
+
+def Add100(request):
+    request.user.points -= 105
+    request.user.popularity += 100
     return redirect('/')

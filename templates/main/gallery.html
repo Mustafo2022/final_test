@@ -17,20 +17,21 @@
             </div>
         </div><!-- End Page Header -->
         <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="shop__product__option__right">
-                <p>Sort by:</p>
-                <select onchange="addParam('sort', this.value)">
-                    <option value="likes" {% if request.GET.sort == 'likes' %}selected{% endif %}>Most Likes</option>
+            <div style="margin-left: 47%; margin-top: -1%; align-items: center; justify-content: center; position: absolute;">
+                <p style="color: #ffffff">Sort by:</p>
+                <select onchange="addParam('sort', this.value)" style="background: #161718; color: #ffffff; border-radius: 5px">
+                    <option value="" {% if request.GET.sort == '?' %}selected{% endif %}>Original</option>
+                    <option value="-likes" {% if request.GET.sort == '-likes' %}selected{% endif %}>Most Likes</option>
                     <option value="-id" {% if request.GET.sort == '-id' %}selected{% endif %}>Most News</option>
                 </select>
             </div>
         </div>
 
         <!-- ======= Gallery Section ======= -->
-        <section id="gallery" class="gallery">
-            <div class="container-fluid">
+        <section id="gallery" class="gallery mt-5">
+            <div class="container-fluid mt-5">
 
-                <div class="row gy-4 justify-content-center">
+                <div class="row gy-4 justify-content-center mt-5">
                     {% for obj in object_list %}
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="gallery-item h-100">

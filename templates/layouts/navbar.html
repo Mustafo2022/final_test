@@ -11,10 +11,10 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="{% url 'home' %}" class="active">Home</a></li>
-                <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'home' %}" {% if request.path == '/' %}class="active"{% endif %} >Home</a></li>
+                <li><a href="{% url 'gallery' %}" {% if request.path == '/gallery/' %}class="active"{% endif %} >Gallery</a></li>
+                <li><a href="{% url 'about' %}" {% if request.path == '/about/' %}class="active"{% endif %} >About</a></li>
+                <li><a href="{% url 'contact' %}" {% if request.path == '/contact/' %}class="active"{% endif %} >Contact</a></li>
                 {% if request.user.is_authenticated %}
                     <li class="dropdown"><a href="#"><span>{{ request.user }}</span> <i
                             class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -38,11 +38,11 @@
                                     <li class="dropdown"><a href="#"><span>{{ request.user.popularity }}</span> <i
                                             class="bi bi-chevron-down dropdown-indicator"></i></a>
                                         <ul>
-                                            <li><a href="#">Add 10 Popularity</a></li>
-                                            <li><a href="#">Add 20 Popularity</a></li>
-                                            <li><a href="#">Add 50 Popularity</a></li>
-                                            <li><a href="#">Add 70 Popularity</a></li>
-                                            <li><a href="#">Add 100 Popularity</a></li>
+                                            <li><a href="{% url 'add-10' %}">Add 10 Popularity</a></li>
+                                            <li><a href="{% url 'add-20' %}">Add 20 Popularity</a></li>
+                                            <li><a href="{% url 'add-50' %}">Add 50 Popularity</a></li>
+                                            <li><a href="{% url 'add-70' %}">Add 70 Popularity</a></li>
+                                            <li><a href="{% url 'add-100' %}">Add 100 Popularity</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -50,7 +50,7 @@
                             <li class="dropdown"><a href="#"><span>Settings</span> <i
                                     class="bi bi-chevron-down dropdown-indicator"></i></a>
                                 <ul>
-                                    <li><a href="#">Report a problem</a></li>
+                                    <li><a href="{% url 'report' %}">Report a problem</a></li>
                                 </ul>
                             </li>
                             <li><a href="{% url 'logout' %}">Log out</a></li>

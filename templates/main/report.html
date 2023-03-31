@@ -1,0 +1,53 @@
+{% extends 'layouts/main.html' %}
+]{% load static %}
+{% block content %}
+
+    <body>
+
+
+    <main id="main">
+
+        <!-- ======= End Page Header ======= -->
+        <div class="page-header d-flex align-items-center">
+            <div class="container position-relative">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h2>Create a Post</h2>
+                        <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas
+                            consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione
+                            sint. Sit quaerat ipsum dolorem.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Page Header -->
+
+        <!-- ======= Contact Section ======= -->
+        <div class="container">
+
+            <div class="row justify-content-center mt-4">
+
+                <div class="col-lg-9">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                        <div class="form-group mt-3">
+                            {{ form.title }}
+                            {#                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>#}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form.message }}
+                            {#                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>#}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-success p-3 border-radius-10 mt-3">Send Message</button>
+                        </div>
+                    </form>
+                </div><!-- End Contact Form -->
+
+            </div>
+
+        </div>
+
+    </main><!-- End #main -->
+{% endblock %}
